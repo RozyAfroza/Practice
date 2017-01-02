@@ -1,0 +1,76 @@
+﻿@model HTMLHelperDataAnnotation.Models.Employee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    @*<link href="~/Content/Site.css" rel="stylesheet"/>*@
+    <style>
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a => a.Name)</td>
+                <td>@Html.TextBoxFor(a => a.Name)
+                    @Html.ValidationMessageFor(a => a.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.Email)</td>
+                <td>@Html.TextBoxFor(a => a.Email)
+                    @Html.ValidationMessageFor(a => a.Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.Gender)</td>
+                <td>@Html.RadioButtonFor(a => a.Gender, "Male", true) Male
+                    @Html.RadioButtonFor(a => a.Gender, "Female") Female
+                    @Html.ValidationMessageFor(a => a.Gender)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.Department)</td>
+                <td>@Html.DropDownListFor(a => a.Department, new SelectList(ViewBag.Departments, "Id", "Name"))
+                    @Html.ValidationMessageFor(a => a.Department)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.Address)</td>
+                <td>@Html.TextAreaFor(a => a.Address)
+                    @Html.ValidationMessageFor(a => a.Address)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.Password)</td>
+                <td>@Html.PasswordFor(a => a.Password)
+                    @Html.ValidationMessageFor(a => a.Password)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.ConfirmPassword)</td>
+                <td>
+                    @Html.PasswordFor(a => a.ConfirmPassword)
+                @Html.ValidationMessageFor(a => a.ConfirmPassword)
+            </td>
+        </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save"/></td>
+            </tr>
+
+        </table>
+    }
+</div>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>
